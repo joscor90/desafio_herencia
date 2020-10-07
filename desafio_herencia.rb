@@ -36,8 +36,8 @@ end
 
 class OneTimeAppointment < Appointment
     attr_reader :location, :purpose, :hour, :min, :day, :month, :year
-    def initialize(:location, :purpose, :hour, :min, :day, :month, :year)
-        super(location, :purpose, :hour, :min)
+    def initialize(location, purpose, hour, min, day, month, year)
+        super(location, purpose, hour, min)
         @day = day
         @month = month
         @year = year
@@ -52,5 +52,9 @@ class OneTimeAppointment < Appointment
     end
 end
 
+#testing all classes
 
+puts MonthlyAppointment.new('Desafío Latam', 'OOP', 4, 7, 30)
+puts DailyAppointment.new('Desafio Latam', 'Bases de Datos', 7, 30)
+puts OneTimeAppointment.new('Desafio Latam', 'Módulos y Mixins', 7, 30, 8, 10, 2020)
 
