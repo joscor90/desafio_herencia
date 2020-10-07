@@ -20,12 +20,18 @@ class MonthlyAppointment < Appointment
     end
 
     def to_s
-        puts "Reunión mensual en #{location} sobre #{purpose} el día #{day} a las #{hour}:#{min}"
+        "Reunión mensual en #{self.location} sobre #{self.purpose} el día #{self.day} a las #{self.hour}:#{self.min}"
     end
 end
 
 class DailyAppointment < Appointment
-    
+    def occurs_on?(hour, min)
+        self.hour == hour && self.min == min
+    end
+
+    def to_s
+        "Reunión diaria en #{self.location} sobre #{self.purpose} a la(s) #{self.hour}:#{self.min}."
+    end
 end
 
 class OneTimeAppointment < Appointment
