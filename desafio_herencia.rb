@@ -9,7 +9,7 @@ class Appointment
 end
 
 class MonthlyAppointment < Appointment
-    attr_reader ::location, :purpose, :hour, :min, :day
+    attr_reader :location, :purpose, :hour, :min, :day
     def initialize(location, purpose, hour, min, day)
         super(location, purpose, hour, min)
         @day = day
@@ -20,7 +20,7 @@ class MonthlyAppointment < Appointment
     end
 
     def to_s
-        "Reunión mensual en #{self.location} sobre #{self.purpose} el día #{self.day} a las #{self.hour}:#{self.min}"
+        "Reunión mensual en #{self.location} sobre #{self.purpose} el día #{self.day} a las #{self.hour}:#{self.min}."
     end
 end
 
@@ -35,4 +35,22 @@ class DailyAppointment < Appointment
 end
 
 class OneTimeAppointment < Appointment
+    attr_reader :location, :purpose, :hour, :min, :day, :month, :year
+    def initialize(:location, :purpose, :hour, :min, :day, :month, :year)
+        super(location, :purpose, :hour, :min)
+        @day = day
+        @month = month
+        @year = year
+    end
+
+    def occurs_on?(day, month, year)
+        self.day == day && self.month == month && self.year = year
+    end
+
+    def to_s
+        "Reunión única en #{self.location} sobre #{self.purpose} el #{self.day}/#{self.month}/#{self.year} a la(s) #{self.hour}:#{self.min}."
+    end
 end
+
+
+
